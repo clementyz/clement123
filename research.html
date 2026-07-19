@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>扬州大学纤维复合材料实验室 - 研究方向</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft YaHei", sans-serif;
+        }
+        body {
+            background-color: #f7f9fc;
+            color: #222;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .nav-bar {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .nav-bar a {
+            display: inline-block;
+            padding: 10px 24px;
+            margin: 0 8px;
+            background: #2b6cb0;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 8px;
+        }
+        .nav-bar a.active {
+            background: #1a365d;
+        }
+        .nav-bar a:hover {
+            background: #2c5282;
+        }
+        header {
+            text-align: center;
+            padding: 40px 0;
+            border-bottom: 1px solid #dde2eb;
+            margin-bottom: 40px;
+        }
+        header h1 {
+            font-size: 2.2rem;
+            color: #1a365d;
+            margin-bottom: 12px;
+        }
+        header p {
+            color: #555;
+            font-size: 1.05rem;
+        }
+        .direction-wrap {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(520px, 1fr));
+            gap: 28px;
+        }
+        .direction-card {
+            background: #fff;
+            padding: 28px;
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+        }
+        .direction-card h2 {
+            color: #1a365d;
+            margin-bottom: 16px;
+            font-size: 1.3rem;
+            padding-left: 10px;
+            border-left: 4px solid #2b6cb0;
+        }
+        .direction-card p {
+            color: #444;
+            margin-bottom:12px;
+        }
+        .direction-card ul {
+            padding-left: 20px;
+            color:#333;
+        }
+        .direction-card li {
+            margin:8px 0;
+        }
+        footer {
+            text-align: center;
+            margin-top: 60px;
+            padding: 30px 0;
+            color: #718096;
+            font-size: 0.9rem;
+            border-top: 1px solid #dde2eb;
+        }
+        @media(max-width:768px){
+            header h1 {
+                font-size:1.7rem;
+            }
+            .direction-wrap {
+                grid-template-columns:1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="nav-bar">
+            <a href="index.html">论文成果</a>
+            <a href="student.html">研究生名录</a>
+            <a href="research.html" class="active">研究方向</a>
+            <a href="leader.html">团队负责人</a>
+        </div>
+        <header>
+            <h1>扬州大学纤维复合材料实验室 · 四大研究方向</h1>
+            <p>面向航空、交通轻量化领域，聚焦三维织物复合材料全链条研发</p>
+        </header>
+        <div class="direction-wrap">
+            <!-- 模块1：树脂基复合材料样品制备及实验 -->
+            <div class="direction-card">
+                <h2>一、树脂基复合材料样品制备及实验</h2>
+                <p>搭建完整复合材料成型实验平台，完成预制体织造、树脂灌注、固化成型与力学测试全流程实验。</p>
+                <ul>
+                    <li>三维织物、簇绒预制体织造工艺开发</li>
+                    <li>VARTM真空辅助树脂灌注成型工艺</li>
+                    <li>拉伸、弯曲、面内剪切、层间剥离力学测试</li>
+                    <li>微观孔隙、界面缺陷观测与表征</li>
+                    <li>成型缺陷（褶皱、干区、气泡）控制实验</li>
+                </ul>
+            </div>
+            <!-- 模块2：纤维复合材料织物变形模拟 -->
+            <div class="direction-card">
+                <h2>二、纤维复合材料织物变形模拟</h2>
+                <p>采用有限元仿真手段，预测织物预成型体在双曲模具下的变形行为，抑制褶皱缺陷。</p>
+                <ul>
+                    <li>织物面内剪切、弯曲、层间摩擦本构模型构建</li>
+                    <li>半球、马鞍面等双曲构件成型数值仿真</li>
+                    <li>分隔件辅助成型、模具润滑工艺仿真优化</li>
+                    <li>褶皱定量识别与缺陷演化机理分析</li>
+                    <li>正交试验+极差分析工艺参数优化</li>
+                </ul>
+            </div>
+            <!-- 模块3：纤维复合材料强度/刚度多尺度模拟 -->
+            <div class="direction-card">
+                <h2>三、纤维复合材料强度/刚度多尺度模拟</h2>
+                <p>从纤维-基体微观、单胞细观、构件宏观多尺度耦合计算，预测复合材料力学性能。</p>
+                <ul>
+                    <li>织物单胞周期性边界条件建模</li>
+                    <li>纤维-基体界面脱粘、裂纹扩展损伤模拟</li>
+                    <li>多尺度均匀化算法求解等效刚度、强度</li>
+                    <li>低速冲击、疲劳载荷下损伤演化预测</li>
+                    <li>微观结构参数对宏观力学性能影响规律</li>
+                </ul>
+            </div>
+            <!-- 模块4：纤维复合材料工艺开发 -->
+            <div class="direction-card">
+                <h2>四、纤维复合材料工艺开发</h2>
+                <p>面向工程应用开发低成本、高质量三维复合材料成型新工艺。</p>
+                <ul>
+                    <li>3D簇绒预制体结构参数优化设计</li>
+                    <li>准各向同性分层预浸料成型新工艺</li>
+                    <li>低成本分隔件、脱模辅助材料研发</li>
+                    <li>轻量化复合材料构件一体化成型工艺</li>
+                    <li>面向轨道交通、风电叶片的工艺适配开发</li>
+                </ul>
+            </div>
+        </div>
+        <footer>
+            <p>扬州大学纤维复合材料实验室学生成果展示站 | 所有成果为本团队原创研究</p>
+        </footer>
+    </div>
+</body>
+</html>
