@@ -34,7 +34,7 @@
             text-decoration: none;
             border-radius: 8px;
         }
-        .nav-bar a.active {
+        .nav a.active {
             background: #1a365d;
         }
         .nav-bar a:hover {
@@ -75,14 +75,13 @@
         }
         .direction-card p {
             color: #444;
-            margin-bottom:12px;
+            margin-bottom: 16px;
         }
-        .direction-card ul {
-            padding-left: 20px;
-            color:#333;
-        }
-        .direction-card li {
-            margin:8px 0;
+        .direction-card img {
+            width: 100%;
+            border-radius: 8px;
+            margin-top: 10px;
+            display: block;
         }
         footer {
             text-align: center;
@@ -104,6 +103,7 @@
 </head>
 <body>
     <div class="container">
+        <!-- 修复：完整恢复4个导航按钮 -->
         <div class="nav-bar">
             <a href="index.html">论文成果</a>
             <a href="student.html">研究生名录</a>
@@ -111,57 +111,35 @@
             <a href="leader.html">团队负责人</a>
         </div>
         <header>
-            <h1>扬州大学纤维复合材料实验室 · 四大研究方向</h1>
-            <p>面向航空、交通轻量化领域，聚焦三维织物复合材料全链条研发</p>
-        </header>
+            <h1>扬州大学纤维复合材料实验室主要研究方向</h1>
+        </div>
         <div class="direction-wrap">
-            <!-- 模块1：树脂基复合材料样品制备及实验 -->
+            <!-- 一、树脂基复合材料样品制备及实验 | 配图：图2 簇绒设备原理图 -->
             <div class="direction-card">
                 <h2>一、树脂基复合材料样品制备及实验</h2>
                 <p>搭建完整复合材料成型实验平台，完成预制体织造、树脂灌注、固化成型与力学测试全流程实验。</p>
-                <ul>
-                    <li>三维织物、簇绒预制体织造工艺开发</li>
-                    <li>VARTM真空辅助树脂灌注成型工艺</li>
-                    <li>拉伸、弯曲、面内剪切、层间剥离力学测试</li>
-                    <li>微观孔隙、界面缺陷观测与表征</li>
-                    <li>成型缺陷（褶皱、干区、气泡）控制实验</li>
-                </ul>
+                <img src="1.jpg" alt="簇绒缝合设备与工艺原理图">
             </div>
-            <!-- 模块2：纤维复合材料织物变形模拟 -->
+
+            <!-- 二、纤维复合材料织物变形模拟 | 配图：图3 成型工装设备 -->
             <div class="direction-card">
-                <h2>二、纤维复合材料织物变形模拟</h2>
+                <h2>二、纤维复合材料织物大变形模拟</h2>
                 <p>采用有限元仿真手段，预测织物预成型体在双曲模具下的变形行为，抑制褶皱缺陷。</p>
-                <ul>
-                    <li>织物面内剪切、弯曲、层间摩擦本构模型构建</li>
-                    <li>半球、马鞍面等双曲构件成型数值仿真</li>
-                    <li>分隔件辅助成型、模具润滑工艺仿真优化</li>
-                    <li>褶皱定量识别与缺陷演化机理分析</li>
-                    <li>正交试验+极差分析工艺参数优化</li>
-                </ul>
+                <img src="2.jpg" alt="复合材料预成型工装设备">
             </div>
-            <!-- 模块3：纤维复合材料强度/刚度多尺度模拟 -->
+
+            <!-- 三、纤维复合材料多尺度力学性能模拟 | 配图：图12 有限元仿真模型 -->
             <div class="direction-card">
                 <h2>三、纤维复合材料强度/刚度多尺度模拟</h2>
                 <p>从纤维-基体微观、单胞细观、构件宏观多尺度耦合计算，预测复合材料力学性能。</p>
-                <ul>
-                    <li>织物单胞周期性边界条件建模</li>
-                    <li>纤维-基体界面脱粘、裂纹扩展损伤模拟</li>
-                    <li>多尺度均匀化算法求解等效刚度、强度</li>
-                    <li>低速冲击、疲劳载荷下损伤演化预测</li>
-                    <li>微观结构参数对宏观力学性能影响规律</li>
-                </ul>
+                <img src="3.jpg" alt="簇绒预制体有限元仿真模型">
             </div>
-            <!-- 模块4：纤维复合材料工艺开发 -->
+
+            <!-- 四、纤维复合材料工艺开发 | 配图：图1 簇绒技术发展流程图 -->
             <div class="direction-card">
                 <h2>四、纤维复合材料工艺开发</h2>
                 <p>面向工程应用开发低成本、高质量三维复合材料成型新工艺。</p>
-                <ul>
-                    <li>3D簇绒预制体结构参数优化设计</li>
-                    <li>准各向同性分层预浸料成型新工艺</li>
-                    <li>低成本分隔件、脱模辅助材料研发</li>
-                    <li>轻量化复合材料构件一体化成型工艺</li>
-                    <li>面向轨道交通、风电叶片的工艺适配开发</li>
-                </ul>
+                <img src="4.jpg" alt="Tufting簇绒技术发展历程">
             </div>
         </div>
         <footer>

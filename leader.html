@@ -95,6 +95,31 @@
         .leader-info ul {
             padding-left:22px;
         }
+        /* 论文条目样式 */
+        .paper-item {
+            margin: 16px 0;
+            padding-bottom: 12px;
+            border-bottom: 1px dashed #e2e8f0;
+        }
+        .paper-title {
+            font-weight: 500;
+        }
+        .paper-journal {
+            color: #2b6cb0;
+        }
+        .paper-doi a {
+            color: #c53030;
+            text-decoration: underline;
+        }
+        .paper-tag {
+            display: inline-block;
+            background: #e6fffa;
+            color: #006c67;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            margin-left: 10px;
+        }
         footer {
             text-align: center;
             margin-top: 60px;
@@ -131,42 +156,68 @@
             <div class="leader-info">
                 <h2>申皓</h2>
                 <div class="leader-title">扬州大学机械工程学院 副教授 | 硕士生导师</div>
-
                 <div class="section-title">教育与工作经历</div>
                 <ul>
-                    <li>里尔大学 固体结构力学专业 博士</li>
-                    <li>现任扬州大学机械工程学院副教授，纤维复合材料团队负责人</li>
+                     <li>扬州大学机械工程学院副教授，纤维复合材料团队负责人</li>
+                     <li>里尔大学 固体结构力学专业 博士</li>
                 </ul>
-
                 <div class="section-title">主要研究领域</div>
-                <p>三维织物复合材料成型仿真、多尺度力学模拟、轻量化构件成型工艺开发，聚焦航空、轨道交通轻量化复合材料应用。</p>
-
+                <p>三维簇绒织物复合材料成型仿真、多尺度力学模拟、轻量化构件成型工艺开发，聚焦航空、轨道交通轻量化复合材料应用。</p>
                 <div class="section-title">科研项目</div>
                 <ul>
                     <li>主持国家自然科学基金（青年）1项</li>
                     <li>主持国家人力资源和社会保障部外专项目1项</li>
                     <li>主持国家科技部外专项目1项</li>
-                    <li>江苏省高等学校基础科学自然科学研究（面上）1项</li>
-                    <li>江苏省基础研究计划自然科学基金（青年）1项</li>
-
+                    <li>主持江苏省高等学校基础科学自然科学研究（面上）1项</li>
+                    <li>主持江苏省基础研究计划自然科学基金（青年）1项</li>
                 </ul>
-
                 <div class="section-title">学术成果</div>
-                <ul>
-                    <li>Hao Shen, Jiachao Chen, Rao Fu, et al. Numerical modeling of forming behavior and defect prediction in tufted 3D through-thickness composite preforms[J]. Composites Part B: Engineering, 2026, 316: 113529(IF7.1,SCI,TOP).</li>
-                    <li>Hao Shen; Jue Zhao; Shenglei Xiao; Peng Wang ; Exploring deformability in 3D tufted composite reinforcements: Understanding bending behaviors in forming applications, Composite Structures, 2025, 354: 118753 (IF7.1,SCI,TOP)</li>
-<li>Hao Shen; Renzi Bai; Mariyemu Abulimiti; Zhihui Li; Hui Cheng; Jin Huang ; Experimental and numerical study of specific bending behavior of tufted multilayered reinforcements and
-effects of tufting density, Composite Structures, 2025, 352: 118670 (IF7.1,SCI,TOP)</li>
-<li>Hao Shen; Liting Yao; Xavier Legrand; Peng Wang ; Characterization of wrinkle morphologies by surface waviness evaluation method during deep forming of multilayer composite
-preforms, Composite Structures, 2023, 306(5): 116586 (IF7.1,SCI,TOP)</li>
-<li>Hao Shen; Peng Wang; Xavier Legrand ; In-plane shear characteristics during the forming of tufted carbon woven fabrics, Composites Part A-applied Science and Manufacturing, 2021,141(2): 106196 (IF8.9,SCI,TOP)</li>
-
-                </ul>
+                <!-- 论文条目：规范格式+可跳转DOI链接 -->
+                <div class="paper-item">
+                    <p class="paper-title">Numerical modeling of forming behavior and defect prediction in tufted 3D through-thickness composite preforms</p>
+                    <p class="paper-journal"><strong>Hao Shen, Jiachao Chen, Rao Fu, Peng Wang.</strong> Composites Part B: Engineering, 2026, 316: 113529 <span class="paper-tag"></p>
+                    <p class="paper-doi">DOI：<a href="https://doi.org/10.1016/j.compositesb.2026.113529" target="_blank">https://doi.org/10.1016/j.compositesb.2026.113529</a></p>
+                </div>
+                   <div class="paper-item">
+                    <p class="paper-title">Exploring deformability in 3D tufted composite reinforcements: Understanding bending behaviors in forming applications</p>
+                    <p class="paper-journal"><strong>Hao Shen, Jue Zhao, Shenglei Xiao, Peng Wang</strong>. Composite Structures, 2025, 354: 118753 <span class="paper-tag"></p>
+                    <p class="paper-doi">DOI：<a href="https://doi.org/10.1016/j.compstruct.2024.118753" target="_blank">https://doi.org/10.1016/j.compstruct.2024.118753</a></p>
+                </div>
+                <div class="paper-item">
+                    <p class="paper-title">Experimental and numerical study of specific bending behavior of tufted multilayered reinforcements and effects of tufting density</p>
+                    <p class="paper-journal"><strong>Hao Shen, Renzi Bai, Mariyemu Abulimiti, Zhihui Li, Hui Cheng, Jin Huang</strong>. Composite Structures, 2025, 352: 118670 <span class="paper-tag"></p>
+                    <p class="paper-doi">DOI：<a href="https://doi.org/10.1016/j.compstruct.2024.118670" target="_blank">https://doi.org/10.1016/j.compstruct.2024.118670</a></p>
+                </div>
+                    <div class="paper-item">
+                    <p class="paper-title">Tufting 复合材料预制体成形及数值仿真研究进展</p>
+                    <p class="paper-journal"><strong>申皓，玛日耶姆・阿卜力米提，李志辉，祁欣，黄晋 </strong>. 复合材料学报，2024, 41 (9): 4701-4719 <span class="paper-tag"></p>
+                    <p class="paper-doi">DOI：<a href="https://doi.org/10.13801/j.cnki.fhclxb.20240416.003" target="_blank">https://doi.org/10.13801/j.cnki.fhclxb.20240416.003</a></p>
+                </div>
+                <div class="paper-item">
+                    <p class="paper-title">Characterization of wrinkle morphologies by surface waviness evaluation method during deep forming of multilayer composite preforms</p>
+                    <p class="paper-journal"><strong>Hao Shen, Liting Yao, Xavier Legrand, Peng Wang</strong>. Composite Structures, 2023, 306: 116586 <span class="paper-tag"></p>
+                    <p class="paper-doi">DOI：<a href="https://doi.org/10.1016/j.compstruct.2022.116586" target="_blank">https://doi.org/10.1016/j.compstruct.2022.116586</a></p>
+                </div>
+                <div class="paper-item">
+                    <p class="paper-title">In-plane shear characteristics during the forming of tufted carbon woven fabrics</p>
+                    <p class="paper-journal"><strong>Hao Shen, Peng Wang, Xavier Legrand</strong>. Composites Part A: Applied Science and Manufacturing, 2021, 141: 106196 <span class="paper-tag"></span></p>
+                    <p class="paper-doi">DOI：<a href="https://doi.org/10.1016/j.compositesa.2020.106196" target="_blank">https://doi.org/10.1016/j.compositesa.2020.106196</a></p>
+                </div>
+                <div class="paper-item">
+                    <p class="paper-title">Characterisation and optimisation of wrinkling during the forming of tufted three-dimensional composite preforms</p>
+                    <p class="paper-journal"><strong>Hao Shen, Peng Wang, Xavier Legrand, Lingshan Liu</strong>. Composites Part A: Applied Science and Manufacturing, 2019, 127: 105651 <span class="paper-tag"></span></p>
+                    <p class="paper-doi">DOI：<a href="https://doi.org/10.1016/j.compositesa.2019.105651" target="_blank">https://doi.org/10.1016/j.compositesa.2019.105651</a></p>
+                </div>
+                 <div class="paper-item">
+                    <p class="paper-title">Influence of the tufting pattern on the formability of tufted multi-layered preforms</p>
+                    <p class="paper-journal"><strong>Hao Shen, Peng Wang, Xavier Legrand, Lingshan Liu, Damien Soulat</strong>. Composite Structures, 2019, 228: 111356<span class="paper-tag"></span></p>
+                    <p class="paper-doi">DOI：<a href="https://doi.org/10.1016/j.compstruct.2019.111356" target="_blank">https://doi.org/10.1016/j.compstruct.2019.111356</a></p>
+                </div>
 
                 <div class="section-title">相关任职</div>
                 <p>多篇SCI论文审稿人</p>
-<p>国际法语区纺织科学协会（ASTex）理事会特邀委员</p>
-<p>第八届中国复合材料学会纺织结构复合材料分会委员</p>
+                <p>国际法语区纺织科学协会（ASTex）理事会特邀委员</p>
+                <p>第八届中国复合材料学会纺织结构复合材料分会委员</p>
             </div>
         </div>
         <footer>
