@@ -76,6 +76,11 @@
             box-shadow: 0 2px 10px rgba(0,0,0,0.05);
             display: flex;
             gap: 20px;
+            flex-direction: column;
+        }
+        .stu-top {
+            display: flex;
+            gap:20px;
         }
         .stu-avatar {
             width: 100px;
@@ -106,9 +111,56 @@
             font-size: 0.9rem;
             border-top: 1px solid #dde2eb;
         }
+        /* 学生评论模块 */
+        .stu-comment-box {
+            margin-top:16px;
+            padding-top:16px;
+            border-top:1px solid #eee;
+        }
+        .stu-comment-input input {
+            width:160px;
+            padding:7px;
+            border:1px solid #ddd;
+            border-radius:6px;
+            margin-right:6px;
+            margin-bottom:6px;
+        }
+        .stu-comment-input textarea {
+            width:100%;
+            height:65px;
+            padding:7px;
+            border:1px solid #ddd;
+            border-radius:6px;
+            resize:none;
+        }
+        .stu-submit-btn {
+            margin-top:8px;
+            padding:6px 14px;
+            background:#2b6cb0;
+            color:#fff;
+            border:none;
+            border-radius:6px;
+            cursor:pointer;
+        }
+        .stu-submit-btn:hover {
+            background:#2c5282;
+        }
+        .stu-comment-list {
+            margin-top:14px;
+        }
+        .stu-comment-item {
+            padding:8px 10px;
+            background:#f7f9fc;
+            border-radius:6px;
+            margin-bottom:6px;
+        }
+        .stu-cmt-name {
+            font-weight:bold;
+            color:#1a365d;
+        }
         /* 手机适配 */
         @media(max-width:680px){
-            .stu-card {
+            .stu-top {
                 flex-direction: column;
                 align-items: center;
                 text-align: center;
@@ -116,15 +168,20 @@
             header h1 {
                 font-size: 1.7rem;
             }
+            .stu-comment-input input {
+                width:100%;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <!-- 导航栏 -->
+        <!-- 导航栏【同步新增两个页面链接】 -->
         <div class="nav-bar">
             <a href="index.html">论文成果</a>
             <a href="student.html" class="active">研究生名录</a>
+            <a href="research.html">研究方向</a>
+            <a href="leader.html">团队负责人</a>
         </div>
         <header>
             <h1>扬州大学纤维复合材料实验室 · 全体研究生名录</h1>
@@ -135,69 +192,130 @@
             <!-- 仅保留一个stu-wrap，所有卡片放这里面，自动多列平铺 -->
             <div class="stu-wrap">
                 <!-- 研究生卡片1 玛日耶姆·阿卜力米提 -->
-                <div class="stu-card">
-                    <img class="stu-avatar" src="xietian.jpg" alt="玛日耶姆头像">
-                    <div class="stu-info">
-                        <h3>玛日耶姆·阿卜力米提</h3>
-                        <p><span class="label">年级：</span>2021级硕士研究生</p>
-                        <p><span class="label">工位地点：</span>机械楼302实验室A区</p>
-                        <p><span class="label">研究方向：</span>复合材料双曲成形仿真、褶皱缺陷控制</p>
-                        <p><span class="label">成果：</span>发表SCI论文2篇，参与横向课题2项</p>
+                <div class="stu-card" data-stu-id="1">
+                    <div class="stu-top">
+                        <img class="stu-avatar" src="xietian.jpg" alt="玛日耶姆头像">
+                        <div class="stu-info">
+                            <h3>玛日耶姆·阿卜力米提</h3>
+                            <p><span class="label">年级：</span>2021级硕士研究生</p>
+                            <p><span class="label">工位地点：</span>机械楼302实验室A区</p>
+                            <p><span class="label">研究方向：</span>复合材料双曲成形仿真、褶皱缺陷控制</p>
+                            <p><span class="label">成果：</span>发表SCI论文2篇，参与横向课题2项</p>
+                        </div>
+                    </div>
+                    <!-- 学生评论区 -->
+                    <div class="stu-comment-box">
+                        <div class="stu-comment-input">
+                            <input type="text" class="stu-nick" placeholder="昵称">
+                            <textarea class="stu-text" placeholder="交流学习、组队实验、学术讨论"></textarea>
+                            <button class="stu-submit-btn" onclick="submitStuComment(1)">发布留言</button>
+                        </div>
+                        <div class="stu-comment-list" id="stu-cmt-1"></div>
                     </div>
                 </div>
                 <!-- 研究生卡片2 赵珏 -->
-                <div class="stu-card">
-                    <img class="stu-avatar" src="chenjiachao.jpg" alt="赵珏头像">
-                    <div class="stu-info">
-                        <h3>赵珏</h3>
-                        <p><span class="label">年级：</span>2022级硕士研究生</p>
-                        <p><span class="label">工位地点：</span>机械楼302实验室B区</p>
-                        <p><span class="label">研究方向：</span>三维织物力学性能测试</p>
-                        <p><span class="label">成果：</span>参与多项织物成型实验项目</p>
+                <div class="stu-card" data-stu-id="2">
+                    <div class="stu-top">
+                        <img class="stu-avatar" src="chenjiachao.jpg" alt="赵珏头像">
+                        <div class="stu-info">
+                            <h3>赵珏</h3>
+                            <p><span class="label">年级：</span>2022级硕士研究生</p>
+                            <p><span class="label">工位地点：</span>机械楼302实验室B区</p>
+                            <p><span class="label">研究方向：</span>三维织物力学性能测试</p>
+                            <p><span class="label">成果：</span>参与多项织物成型实验项目</p>
+                        </div>
+                    </div>
+                    <div class="stu-comment-box">
+                        <div class="stu-comment-input">
+                            <input type="text" class="stu-nick" placeholder="昵称">
+                            <textarea class="stu-text" placeholder="交流学习、组队实验、学术讨论"></textarea>
+                            <button class="stu-submit-btn" onclick="submitStuComment(2)">发布留言</button>
+                        </div>
+                        <div class="stu-comment-list" id="stu-cmt-2"></div>
                     </div>
                 </div>
                 <!-- 研究生卡片3 谢添 -->
-                <div class="stu-card">
-                    <img class="stu-avatar" src="xuzhangjie.jpg" alt="谢添头像">
-                    <div class="stu-info">
-                        <h3>谢添</h3>
-                        <p><span class="label">身份：</span>2023级硕士研究生</p>
-                        <p><span class="label">工位地点：</span>机械楼302实验操作台</p>
-                        <p><span class="label">研究方向：</span>3D簇绒预成型体成形优化</p>
-                        <p><span class="label">成果：</span>一作发表SCI论文1篇</p>
+                <div class="stu-card" data-stu-id="3">
+                    <div class="stu-top">
+                        <img class="stu-avatar" src="xuzhangjie.jpg" alt="谢添头像">
+                        <div class="stu-info">
+                            <h3>谢添</h3>
+                            <p><span class="label">身份：</span>2023级硕士研究生</p>
+                            <p><span class="label">工位地点：</span>机械楼302实验操作台</p>
+                            <p><span class="label">研究方向：</span>3D簇绒预成型体成形优化</p>
+                            <p><span class="label">成果：</span>一作发表SCI论文1篇</p>
+                        </div>
+                    </div>
+                    <div class="stu-comment-box">
+                        <div class="stu-comment-input">
+                            <input type="text" class="stu-nick" placeholder="昵称">
+                            <textarea class="stu-text" placeholder="交流学习、组队实验、学术讨论"></textarea>
+                            <button class="stu-submit-btn" onclick="submitStuComment(3)">发布留言</button>
+                        </div>
+                        <div class="stu-comment-list" id="stu-cmt-3"></div>
                     </div>
                 </div>
                 <!-- 研究生卡片4 陈家超 -->
-                <div class="stu-card">
-                    <img class="stu-avatar" src="xuzhangjie.jpg" alt="陈家超头像">
-                    <div class="stu-info">
-                        <h3>陈家超</h3>
-                        <p><span class="label">身份：</span>2024级硕士研究生</p>
-                        <p><span class="label">工位地点：</span>机械楼302实验操作台</p>
-                        <p><span class="label">研究方向：</span>3D簇绒预成型体成形优化</p>
-                        <p><span class="label">成果：</span>一作发表SCI论文1篇</p>
+                <div class="stu-card" data-stu-id="4">
+                    <div class="stu-top">
+                        <img class="stu-avatar" src="xuzhangjie.jpg" alt="陈家超头像">
+                        <div class="stu-info">
+                            <h3>陈家超</h3>
+                            <p><span class="label">身份：</span>2024级硕士研究生</p>
+                            <p><span class="label">工位地点：</span>机械楼302实验操作台</p>
+                            <p><span class="label">研究方向：</span>3D簇绒预成型体成形优化</p>
+                            <p><span class="label">成果：</span>一作发表SCI论文1篇</p>
+                        </div>
+                    </div>
+                    <div class="stu-comment-box">
+                        <div class="stu-comment-input">
+                            <input type="text" class="stu-nick" placeholder="昵称">
+                            <textarea class="stu-text" placeholder="交流学习、组队实验、学术讨论"></textarea>
+                            <button class="stu-submit-btn" onclick="submitStuComment(4)">发布留言</button>
+                        </div>
+                        <div class="stu-comment-list" id="stu-cmt-4"></div>
                     </div>
                 </div>
                 <!-- 研究生卡片5 王旭 -->
-                <div class="stu-card">
-                    <img class="stu-avatar" src="xuzhangjie.jpg" alt="王旭头像">
-                    <div class="stu-info">
-                        <h3>王旭</h3>
-                        <p><span class="label">身份：</span>2025级硕士研究生</p>
-                        <p><span class="label">工位地点：</span>机械楼302实验操作台</p>
-                        <p><span class="label">研究方向：</span>3D簇绒预成型体成形优化</p>
-                        <p><span class="label">成果：</span>一作发表SCI论文1篇</p>
+                <div class="stu-card" data-stu-id="5">
+                    <div class="stu-top">
+                        <img class="stu-avatar" src="xuzhangjie.jpg" alt="王旭头像">
+                        <div class="stu-info">
+                            <h3>王旭</h3>
+                            <p><span class="label">身份：</span>2025级硕士研究生</p>
+                            <p><span class="label">工位地点：</span>机械楼302实验操作台</p>
+                            <p><span class="label">研究方向：</span>3D簇绒预成型体成形优化</p>
+                            <p><span class="label">成果：</span>一作发表SCI论文1篇</p>
+                        </div>
+                    </div>
+                    <div class="stu-comment-box">
+                        <div class="stu-comment-input">
+                            <input type="text" class="stu-nick" placeholder="昵称">
+                            <textarea class="stu-text" placeholder="交流学习、组队实验、学术讨论"></textarea>
+                            <button class="stu-submit-btn" onclick="submitStuComment(5)">发布留言</button>
+                        </div>
+                        <div class="stu-comment-list" id="stu-cmt-5"></div>
                     </div>
                 </div>
                 <!-- 研究生卡片6 李江 -->
-                <div class="stu-card">
-                    <img class="stu-avatar" src="xuzhangjie.jpg" alt="李江头像">
-                    <div class="stu-info">
-                        <h3>李江</h3>
-                        <p><span class="label">身份：</span>2026级硕士研究生</p>
-                        <p><span class="label">工位地点：</span>机械楼302实验操作台</p>
-                        <p><span class="label">研究方向：</span>3D簇绒预成型体成形优化</p>
-                        <p><span class="label">成果：</span>一作发表SCI论文1篇</p>
+                <div class="stu-card" data-stu-id="6">
+                    <div class="stu-top">
+                        <img class="stu-avatar" src="xuzhangjie.jpg" alt="李江头像">
+                        <div class="stu-info">
+                            <h3>李江</h3>
+                            <p><span class="label">身份：</span>2026级硕士研究生</p>
+                            <p><span class="label">工位地点：</span>机械楼302实验操作台</p>
+                            <p><span class="label">研究方向：</span>3D簇绒预成型体成形优化</p>
+                            <p><span class="label">成果：</span>一作发表SCI论文1篇</p>
+                        </div>
+                    </div>
+                    <div class="stu-comment-box">
+                        <div class="stu-comment-input">
+                            <input type="text" class="stu-nick" placeholder="昵称">
+                            <textarea class="stu-text" placeholder="交流学习、组队实验、学术讨论"></textarea>
+                            <button class="stu-submit-btn" onclick="submitStuComment(6)">发布留言</button>
+                        </div>
+                        <div class="stu-comment-list" id="stu-cmt-6"></div>
                     </div>
                 </div>
             </div>
@@ -206,5 +324,36 @@
             <p>扬州大学纤维复合材料实验室学生成果展示站 | 所有成果为本团队原创研究</p>
         </footer>
     </div>
+    <script>
+        // 存储所有学生评论
+        let stuComments = {1:[],2:[],3:[],4:[],5:[],6:[]};
+
+        // 提交学生评论
+        function submitStuComment(sid){
+            const card = document.querySelector(`.stu-card[data-stu-id="${sid}"]`);
+            const nick = card.querySelector(".stu-nick").value.trim();
+            const text = card.querySelector(".stu-text").value.trim();
+            if(!nick || !text){
+                alert("请填写昵称和留言内容！");
+                return;
+            }
+            stuComments[sid].push({nick, text});
+            renderStuComment(sid);
+            card.querySelector(".stu-nick").value = "";
+            card.querySelector(".stu-text").value = "";
+        }
+
+        // 渲染学生评论
+        function renderStuComment(sid){
+            const wrap = document.getElementById(`stu-cmt-${sid}`);
+            let html = "";
+            stuComments[sid].forEach(item=>{
+                html += `<div class="stu-comment-item">
+                    <span class="stu-cmt-name">${item.nick}</span>：${item.text}
+                </div>`
+            })
+            wrap.innerHTML = html;
+        }
+    </script>
 </body>
 </html>

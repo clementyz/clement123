@@ -1,180 +1,475 @@
-<script>
-// ============ JSONBin 配置 ============
-const BIN_ID = "6a5cc243da38895dfe7238ab";
-const MASTER_KEY = "$2a$10$.XuXrDEqcDcIESsNsUBF1.GqMwayzG/zpswI00LVmzMghv/OZ1DBe";
-const API_HOST = "https://api.jsonbin.io/v3";
-// ======================================
-
-const authorData = {
-    1: `
-        <h3>本篇论文作者介绍</h3>
-        <div class="author-item">
-            <img class="author-avatar" src="xietian.jpg" alt="谢添头像">
-            <div class="author-text">
-                <div class="author-name">谢添 | 23级硕士研究生</div>
-                <div>研究方向：复合材料多尺度仿真、低速冲击损伤；参与2项横向课题，发表SCI论文2篇。</div>
-            </div>
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>扬州大学纤维复合材料实验室 - 学生学术成果展示</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft YaHei", sans-serif;
+        }
+        body {
+            background-color: #f7f9fc;
+            color: #222;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        /* 导航栏样式 */
+        .nav-bar {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .nav-bar a {
+            display: inline-block;
+            padding: 10px 24px;
+            margin: 0 8px;
+            background: #2b6cb0;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 8px;
+        }
+        .nav-bar a.active {
+            background: #1a365d;
+        }
+        .nav-bar a:hover {
+            background: #2c5282;
+        }
+        header {
+            text-align: center;
+            padding: 40px 0;
+            border-bottom: 1px solid #dde2eb;
+            margin-bottom: 40px;
+        }
+        header h1 {
+            font-size: 2.2rem;
+            color: #1a365d;
+            margin-bottom: 12px;
+        }
+        header p {
+            color: #555;
+            font-size: 1.05rem;
+        }
+        .team-info {
+            background: #fff;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+            margin-bottom: 40px;
+        }
+        .team-info h2 {
+            color: #1a365d;
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+        .paper-section h2 {
+            color: #1a365d;
+            margin-bottom: 25px;
+            font-size: 1.4rem;
+            padding-left: 8px;
+            border-left: 4px solid #2b6cb0;
+        }
+        .paper-card {
+            background: #fff;
+            border-radius: 10px;
+            padding: 22px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            transition: 0.2s ease;
+        }
+        .paper-card:hover {
+            box-shadow: 0 4px 16px rgba(43, 108, 176, 0.12);
+        }
+        .paper-title {
+            font-size: 1.15rem;
+            font-weight: bold;
+            color: #1a365d;
+            margin-bottom: 10px;
+        }
+        .paper-meta {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 10px;
+            margin: 12px 0;
+        }
+        .meta-item {
+            font-size: 0.95rem;
+        }
+        .meta-label {
+            font-weight: 600;
+            color: #444;
+        }
+        .zone-q1 {
+            color: #009639;
+            font-weight: bold;
+        }
+        .zone-q2 {
+            color: #2b6cb0;
+            font-weight: bold;
+        }
+        .zone-q3 {
+            color: #d97706;
+            font-weight: bold;
+        }
+        .zone-q4 {
+            color: #c53030;
+            font-weight: bold;
+        }
+        .paper-abstract {
+            margin: 14px 0;
+            color: #4a5568;
+            font-size: 0.95rem;
+        }
+        .paper-buttons a {
+            display: inline-block;
+            padding: 7px 16px;
+            background: #2b6cb0;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            margin-right: 10px;
+            cursor: pointer;
+        }
+        .paper-buttons a:hover {
+            background: #2c5282;
+        }
+        footer {
+            text-align: center;
+            margin-top: 60px;
+            padding: 30px 0;
+            color: #718096;
+            font-size: 0.9rem;
+            border-top: 1px solid #dde2eb;
+        }
+        /* 作者弹窗样式 */
+        .modal-mask {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.6);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 999;
+        }
+        .modal-box {
+            width: 90%;
+            max-width: 700px;
+            background: #fff;
+            border-radius: 12px;
+            padding: 30px;
+            position: relative;
+        }
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 24px;
+            cursor: pointer;
+            color: #666;
+        }
+        .modal-close:hover {
+            color: #000;
+        }
+        .author-item {
+            display: flex;
+            gap: 18px;
+            margin: 20px 0;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+        /* 头像样式 */
+        .author-avatar {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #e2e8f0;
+        }
+        .author-text {
+            flex: 1;
+        }
+        .author-name {
+            font-weight: bold;
+            font-size: 1.1rem;
+            color: #1a365d;
+            margin-bottom:6px;
+        }
+        /* 点赞评论模块样式 */
+        .interact-box {
+            margin-top: 20px;
+            padding-top: 18px;
+            border-top: 1px solid #eee;
+        }
+        .like-btn {
+            display: inline-block;
+            padding: 6px 14px;
+            background: #e8f0fe;
+            color: #2b6cb0;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            margin-bottom:15px;
+        }
+        .like-btn:hover {
+            background:#d0e1f7;
+        }
+        .comment-input-area {
+            margin:12px 0;
+        }
+        .comment-input-area input[type="text"] {
+            width: 180px;
+            padding:8px;
+            border:1px solid #ddd;
+            border-radius:6px;
+            margin-right:8px;
+            margin-bottom:8px;
+        }
+        .comment-input-area textarea {
+            width:100%;
+            height:70px;
+            padding:8px;
+            border:1px solid #ddd;
+            border-radius:6px;
+            resize:none;
+        }
+        .submit-comment {
+            margin-top:8px;
+            padding:7px 16px;
+            background:#2b6cb0;
+            color:#fff;
+            border:none;
+            border-radius:6px;
+            cursor:pointer;
+        }
+        .submit-comment:hover {
+            background:#2c5282;
+        }
+        .comment-list {
+            margin-top:16px;
+        }
+        .comment-item {
+            padding:10px 12px;
+            background:#f7f9fc;
+            border-radius:6px;
+            margin-bottom:8px;
+        }
+        .comment-user {
+            font-weight:bold;
+            color:#1a365d;
+            margin-bottom:4px;
+        }
+        /* 手机端适配，头像上下排列 */
+        @media(max-width:600px){
+            .author-item {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            .modal-box {
+                padding:20px;
+            }
+            .author-avatar {
+                width: 110px;
+                height: 110px;
+            }
+            .comment-input-area input[type="text"] {
+                width:100%;
+            }
+        }
+        @media(max-width:768px){
+            header h1 {
+                font-size: 1.7rem;
+            }
+            .paper-meta {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 顶部导航栏【新增2个页面链接】 -->
+        <div class="nav-bar">
+            <a href="index.html" class="active">论文成果</a>
+            <a href="student.html">研究生名录</a>
+            <a href="research.html">研究方向</a>
+            <a href="leader.html">团队负责人</a>
         </div>
-    `,
-    2: `
-        <h3>本篇论文作者介绍</h3>
-        <div class="author-item">
-            <img class="author-avatar" src="xuzhangjie.jpg" alt="许张杰头像">
-            <div class="author-text">
-                <div class="author-name">许张杰 | 本科科创学生</div>
-                <div>研究方向：树脂灌注成型、孔隙缺陷控制；主导本课题实验。</div>
-            </div>
+        <!-- 头部标题 -->
+        <header>
+            <h1>扬州大学纤维复合材料实验室 · 学生学术成果展示</h1>
+        </header>
+        <!-- 团队介绍区域 -->
+        <div class="team-info">
+            <h2>团队简介</h2>
+            <p>本团队依托扬州大学机械工程学院纤维复合材料研究方向，专注于三维织物结构领域创新研究。</p>
         </div>
-    `
-};
-function openAuthorModal(id) {
-    document.getElementById('modalContent').innerHTML = authorData[id];
-    document.getElementById('authorModal').style.display = 'flex';
-}
-function closeAuthorModal() {
-    document.getElementById('authorModal').style.display = 'none';
-}
-document.getElementById('authorModal').addEventListener('click', function(e){
-    if(e.target === this){
-        closeAuthorModal();
-    }
-})
+        <!-- 论文展示区域 -->
+        <section class="paper-section">
+       <h2>学生一作论文列表</h2>
 
-// 全局缓存数据 + 默认兜底结构
-let cloudData = {
-    paperLike: {"1":0,"2":0},
-    paperComments: {"1":[],"2":[]},
-    stuComments: {"1":[],"2":[],"3":[],"4":[],"5":[],"6":[]}
-};
-// 本地存储：记录当前设备已点赞的论文，防止刷赞
-const LIKE_STORAGE_KEY = "lab_has_liked_paper";
+       <!-- 论文卡片2（Q2期刊示例） -->
+            <div class="paper-card" data-paper-id="2">
+                <div class="paper-title">Optimization of Structural Parameters for Promoting Formability of 3D Tufted Composite Preforms</div>
+                <div class="paper-meta">
+                    <div class="meta-item"><span class="meta-label">作者：</span>许张杰1,汤建鑫,尹瑞康,吕艳飞,申皓*,王鹏</div>
+                    <div class="meta-item"><span class="meta-label">期刊：</span>International Journal of Material Forming</div>
+                    <div class="meta-item"><span class="meta-label">分区：</span><span class="zone-q1">SCIE,大类材料科学3区</span></div>
+                    <div class="meta-item"><span class="meta-label">发表时间：</span>2026年</div>
+                    <div class="meta-item"><span class="meta-label">DOI：</span>10.1016/j.polymertesting.2026.110234</div>
+                </div>
+                <div class="paper-abstract">
+                    摘要：簇绒复合材料预成型体的成形性能强烈依赖于面内剪切、面外弯曲和层间摩擦行为。然而，由于缺乏关于各种簇绒参数对这些成形行为影响规律的系统性研究，目前仍缺少针对双曲成形工艺优化簇绒参数的有效策略。本文采用极差分析和方差分析的正交试验方法，研究了多簇绒参数与相应成形行为之间的关系。结果表明：簇绒纱线的面内角度对预成型体的面内剪切刚度起主导作用（贡献率为99.69%），簇绒间距对预成型体的面外弯曲刚度影响最为显著（贡献率为45.20%），而簇绒纱线的线圈长度是控制层间摩擦的关键参数（贡献率为91.07%）。提出了一种针对这些簇绒参数的优化策略以减少褶皱，并通过半球成形试验进行了验证。
+                </div>
+                <div class="paper-buttons">
+                    <a onclick="openAuthorModal(2)">作者简介</a>
+                    <a href="#" target="_blank">DOI链接</a>
+                </div>
+                <!-- 新增点赞评论区 -->
+                <div class="interact-box">
+                    <button class="like-btn" onclick="addLike(2)">👍 点赞 <span class="like-num">0</span></button>
+                    <div class="comment-input-area">
+                        <input type="text" class="nickname" placeholder="输入你的昵称">
+                        <textarea class="comment-text" placeholder="写下你的评论，和同学交流学术心得"></textarea>
+                        <button class="submit-comment" onclick="submitPaperComment(2)">发布评论</button>
+                    </div>
+                    <div class="comment-list" id="paper-comment-2"></div>
+                </div>
+            </div>
+            
+            <!-- 论文卡片1（Q1期刊示例） -->
+            <div class="paper-card" data-paper-id="1">
+                <div class="paper-title">Mitigating Wrinkles in Double-Curved Forming: A Numerical Study on Quasi-Isotropic Preforms with Separators</div>
+                <div class="paper-meta">
+                    <div class="meta-item"><span class="meta-label">作者：</span>谢添1,陈家超,李浩宇,申皓*,王鹏</div>
+                    <div class="meta-item"><span class="meta-label">期刊：</span>Applied Composite Materials</div>
+                    <div class="meta-item"><span class="meta-label">分区：</span><span class="zone-q1">SCIE,大类材料科学3区  </span></div>
+                    <div class="meta-item"><span class="meta-label">发表时间：</span>2026年3月</div>
+                    <div class="meta-item"><span class="meta-label">DOI：</span>10.1007/s10443-026-10453-6</div>
+                </div>
+                <div class="paper-abstract">
+                    摘要：双曲复合材料构件因其高比强度和低风阻特性，广泛应用于航空航天与交通运输领域。然而，褶皱是准各向同性复合材料预浸料在双曲成形过程中产生的主要缺陷。本研究旨在通过数值模拟方法，探讨在分隔件辅助下双曲成形过程中抑制褶皱的策略。通过点云分析实现了对褶皱的定量评估。模拟结果表明，褶皱缺陷的严重程度与分隔件厚度及织物-模具摩擦系数高度相关，而对织物-织物摩擦系数的依赖性较弱。研究还表明，褶皱的形成主要归因于摩擦做功，而非摩擦力本身。最后，综合考虑成本与成形质量之间的平衡，确定分隔件厚度为4 mm、织物-分隔件摩擦系数为0.3时为最优配置。
+                </div>
+                <div class="paper-buttons">
+                    <a onclick="openAuthorModal(1)">作者简介</a>
+                    <a href="https://link.springer.com/article/10.1007/s10443-026-10453-6" target="_blank">DOI链接</a>
+                </div>
+                <!-- 新增点赞评论区 -->
+                <div class="interact-box">
+                    <button class="like-btn" onclick="addLike(1)">👍 点赞 <span class="like-num">0</span></button>
+                    <div class="comment-input-area">
+                        <input type="text" class="nickname" placeholder="输入你的昵称">
+                        <textarea class="comment-text" placeholder="写下你的评论，和同学交流学术心得"></textarea>
+                        <button class="submit-comment" onclick="submitPaperComment(1)">发布评论</button>
+                    </div>
+                    <div class="comment-list" id="paper-comment-1"></div>
+                </div>
+            </div>
+            
+        </section>
+        <!-- 底部 -->
+        <footer>
+            <p>扬州大学纤维复合材料实验室学生成果展示站 | 所有成果为本团队原创研究</p>
+        </footer>
+    </div>
+    <!-- 全局弹窗遮罩 -->
+    <div class="modal-mask" id="authorModal">
+        <div class="modal-box">
+            <span class="modal-close" onclick="closeAuthorModal()">×</span>
+            <div id="modalContent"></div>
+        </div>
+    </div>
+    <script>
+        // 每篇论文对应的作者信息，数字对应 openAuthorModal(数字)
+        const authorData = {
+            1: `
+                <h3>本篇论文作者介绍</h3>
+                <div class="author-item">
+                    <img class="author-avatar" src="xietian.jpg" alt="谢添头像">
+                    <div class="author-text">
+                        <div class="author-name">谢添 | 23级硕士研究生</div>
+                        <div>研究方向：复合材料多尺度仿真、低速冲击损伤；参与2项横向课题，发表SCI论文2篇。</div>
+                    </div>
+                </div>
+            `,
+            2: `
+                <h3>本篇论文作者介绍</h3>
+                <div class="author-item">
+                    <img class="author-avatar" src="xuzhangjie.jpg" alt="许张杰头像">
+                    <div class="author-text">
+                        <div class="author-name">许张杰 | 本科科创学生</div>
+                        <div>研究方向：树脂灌注成型、孔隙缺陷控制；主导本课题实验。</div>
+                    </div>
+                </div>
+            `
+        };
+        // 打开弹窗
+        function openAuthorModal(id) {
+            document.getElementById('modalContent').innerHTML = authorData[id];
+            document.getElementById('authorModal').style.display = 'flex';
+        }
+        // 关闭弹窗
+        function closeAuthorModal() {
+            document.getElementById('authorModal').style.display = 'none';
+        }
+        // 点击灰色背景关闭弹窗
+        document.getElementById('authorModal').addEventListener('click', function(e){
+            if(e.target === this){
+                closeAuthorModal();
+            }
+        })
 
-// 获取本机已点赞列表
-function getLikedRecord() {
-    const str = localStorage.getItem(LIKE_STORAGE_KEY);
-    return str ? JSON.parse(str) : [];
-}
-// 保存点赞记录
-function saveLikedRecord(arr) {
-    localStorage.setItem(LIKE_STORAGE_KEY, JSON.stringify(arr));
-}
+        // ========== 点赞评论交互逻辑 ==========
+        // 存储点赞数量
+        let likeData = {1:0, 2:0};
+        // 存储论文评论
+        let paperComments = {1:[], 2:[]};
 
-// 读取云端数据
-async function loadCloudData(){
-    try{
-        const res = await fetch(`${API_HOST}/b/${BIN_ID}/latest`,{
-            headers: { "X-Master-Key": MASTER_KEY }
-        });
-        if(!res.ok) throw new Error("接口返回异常，请核对BIN_ID和密钥");
-        const json = await res.json();
-        const record = json.record || {};
-        // 兜底补全缺失字段，防止渲染报错
-        cloudData.paperLike = record.paperLike || {"1":0,"2":0};
-        cloudData.paperComments = record.paperComments || {"1":[],"2":[]};
-        cloudData.stuComments = record.stuComments || {"1":[],"2":[],"3":[],"4":[],"5":[],"6":[]};
-        renderAllPaper();
-    }catch(err){
-        alert("数据加载失败：" + err.message + "\n1.检查网络；2.核对BIN_ID/MASTER_KEY；3.确认JSONBin仓库数据格式正确");
-        console.error("读取云端数据失败",err);
-    }
-}
+        // 点赞函数
+        function addLike(pid){
+            likeData[pid] += 1;
+            document.querySelector(`.paper-card[data-paper-id="${pid}"] .like-num`).innerText = likeData[pid];
+        }
 
-// 同步数据到云端
-async function saveCloudData(){
-    try{
-        await fetch(`${API_HOST}/b/${BIN_ID}`,{
-            method:"PUT",
-            headers: {
-                "X-Master-Key": MASTER_KEY,
-                "Content-Type":"application/json"
-            },
-            body: JSON.stringify(cloudData)
-        });
-        return true;
-    }catch(err){
-        alert("提交失败，请检查网络后重试");
-        console.error("保存云端失败", err);
-        return false;
-    }
-}
+        // 提交论文评论
+        function submitPaperComment(pid){
+            const card = document.querySelector(`.paper-card[data-paper-id="${pid}"]`);
+            const nick = card.querySelector(".nickname").value.trim();
+            const text = card.querySelector(".comment-text").value.trim();
+            if(!nick || !text){
+                alert("请填写昵称和评论内容！");
+                return;
+            }
+            paperComments[pid].push({nick, text});
+            renderPaperComment(pid);
+            // 清空输入
+            card.querySelector(".nickname").value = "";
+            card.querySelector(".comment-text").value = "";
+        }
 
-// 点赞函数（增加单设备仅一次限制）
-async function addLike(pid){
-    const likedList = getLikedRecord();
-    if(likedList.includes(String(pid))){
-        alert("你已经为这篇论文点过赞啦，无法重复点赞");
-        return;
-    }
-    // 禁用按钮防止重复点击
-    const btn = document.querySelector(`.paper-card[data-paper-id="${pid}"] .like-btn`);
-    btn.disabled = true;
-    btn.innerText = "提交中...";
-
-    cloudData.paperLike[pid] += 1;
-    const saveOk = await saveCloudData();
-    if(saveOk){
-        // 记录本机已点赞
-        likedList.push(String(pid));
-        saveLikedRecord(likedList);
-        document.querySelector(`.paper-card[data-paper-id="${pid}"] .like-num`).innerText = cloudData.paperLike[pid];
-    }
-    // 恢复按钮
-    btn.disabled = false;
-    btn.innerHTML = `👍 点赞 <span class="like-num">${cloudData.paperLike[pid]}</span>`;
-}
-
-// 提交论文评论
-async function submitPaperComment(pid){
-    const card = document.querySelector(`.paper-card[data-paper-id="${pid}"]`);
-    const nick = card.querySelector(".nickname").value.trim();
-    const text = card.querySelector(".comment-text").value.trim();
-    if(!nick || !text){
-        alert("请填写昵称和评论内容！");
-        return;
-    }
-    const submitBtn = card.querySelector(".submit-comment");
-    submitBtn.disabled = true;
-    submitBtn.innerText = "发布中...";
-
-    cloudData.paperComments[pid].push({
-        nick,
-        text,
-        time: new Date().toLocaleString()
-    });
-    const ok = await saveCloudData();
-    if(ok){
-        renderPaperComment(pid);
-        card.querySelector(".nickname").value = "";
-        card.querySelector(".comment-text").value = "";
-    }
-    submitBtn.disabled = false;
-    submitBtn.innerText = "发布评论";
-}
-
-// 渲染单篇论文评论
-function renderPaperComment(pid){
-    const wrap = document.getElementById(`paper-comment-${pid}`);
-    let html = "";
-    cloudData.paperComments[pid].forEach(item=>{
-        html += `<div class="comment-item">
-            <div class="comment-user">${item.nick} <span style="font-weight:normal;color:#888;font-size:12px;">${item.time}</span></div>
-            <div>${item.text}</div>
-        </div>`;
-    })
-    wrap.innerHTML = html;
-}
-
-// 渲染所有论文点赞+评论
-function renderAllPaper(){
-    for(let pid in cloudData.paperLike){
-        const numDom = document.querySelector(`.paper-card[data-paper-id="${pid}"] .like-num`);
-        if(numDom) numDom.innerText = cloudData.paperLike[pid];
-        renderPaperComment(pid);
-    }
-}
-
-// 页面加载自动拉取云端数据
-window.onload = function(){
-    loadCloudData();
-}
-</script>
+        // 渲染论文评论
+        function renderPaperComment(pid){
+            const wrap = document.getElementById(`paper-comment-${pid}`);
+            let html = "";
+            paperComments[pid].forEach(item=>{
+                html += `<div class="comment-item">
+                    <div class="comment-user">${item.nick}</div>
+                    <div>${item.text}</div>
+                </div>`;
+            })
+            wrap.innerHTML = html;
+        }
+    </script>
+</body>
+</html>
