@@ -21,6 +21,26 @@
             margin: 0 auto;
             padding: 20px;
         }
+        /* 导航栏样式 */
+        .nav-bar {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .nav-bar a {
+            display: inline-block;
+            padding: 10px 24px;
+            margin: 0 8px;
+            background: #2b6cb0;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 8px;
+        }
+        .nav-bar a.active {
+            background: #1a365d;
+        }
+        .nav-bar a:hover {
+            background: #2c5282;
+        }
         header {
             text-align: center;
             padding: 40px 0;
@@ -128,7 +148,6 @@
             font-size: 0.9rem;
             border-top: 1px solid #dde2eb;
         }
-
         /* 作者弹窗样式 */
         .modal-mask {
             position: fixed;
@@ -185,7 +204,6 @@
             color: #1a365d;
             margin-bottom:6px;
         }
-
         /* 手机端适配，头像上下排列 */
         @media(max-width:600px){
             .author-item {
@@ -213,22 +231,25 @@
 </head>
 <body>
     <div class="container">
+        <!-- 顶部导航栏 -->
+        <div class="nav-bar">
+            <a href="index.html" class="active">论文成果</a>
+            <a href="student.html">研究生名录</a>
+        </div>
+
         <!-- 头部标题 -->
         <header>
             <h1>扬州大学纤维复合材料实验室 · 学生学术成果展示</h1>
-            <p>指导老师：申皓 | 科创团队论文合集</p>
+            <p>团队负责人：申皓 | 副教授</p>
         </header>
-
         <!-- 团队介绍区域 -->
         <div class="team-info">
             <h2>团队简介</h2>
-            <p>本团队依托扬州大学机械工程学院纤维复合材料研究方向，专注于三维织物结构领域创新研究，在读本科生、研究生共同完成多篇SCI/核心期刊论文，以下为团队学生一作发表学术成果。</p>
+            <p>本团队依托扬州大学机械工程学院纤维复合材料研究方向，专注于三维织物结构领域创新研究。在读本科生、研究生共同完成多篇SCI/EI期刊论文，以下为团队学生一作发表学术成果。</p>
         </div>
-
         <!-- 论文展示区域 -->
         <section class="paper-section">
             <h2>已发表论文列表</h2>
-
             <!-- 论文卡片1（Q1期刊示例） -->
             <div class="paper-card">
                 <div class="paper-title">Mitigating Wrinkles in Double-Curved Forming: A Numerical Study on Quasi-Isotropic Preforms with Separators</div>
@@ -247,7 +268,6 @@
                     <a href="https://link.springer.com/article/10.1007/s10443-026-10453-6" target="_blank">DOI链接</a>
                 </div>
             </div>
-
             <!-- 论文卡片2（Q2期刊示例） -->
             <div class="paper-card">
                 <div class="paper-title">Optimization of Structural Parameters for Promoting Formability of 3D Tufted Composite Preforms</div>
@@ -267,7 +287,6 @@
                 </div>
             </div>
         </section>
-
         <!-- 底部 -->
         <footer>
             <p>扬州大学纤维复合材料实验室学生成果展示站 | 所有成果为本团队原创研究</p>
@@ -288,7 +307,7 @@
             1: `
                 <h3>本篇论文作者介绍</h3>
                 <div class="author-item">
-                    <img class="author-avatar" src="zhangsan.jpg" alt="张三头像">
+                    <img class="author-avatar" src="xietian.jpg" alt="谢添头像">
                     <div class="author-text">
                         <div class="author-name">谢添 | 23级硕士研究生</div>
                         <div>研究方向：复合材料多尺度仿真、低速冲击损伤；参与2项横向课题，发表SCI论文2篇。</div>
@@ -298,7 +317,7 @@
             2: `
                 <h3>本篇论文作者介绍</h3>
                 <div class="author-item">
-                    <img class="author-avatar" src="lisi.jpg" alt="李四头像">
+                    <img class="author-avatar" src="xuzhangjie.jpg" alt="许张杰头像">
                     <div class="author-text">
                         <div class="author-name">许张杰 | 本科科创学生</div>
                         <div>研究方向：树脂灌注成型、孔隙缺陷控制；主导本课题实验。</div>
@@ -306,7 +325,6 @@
                 </div>
             `
         };
-
         // 打开弹窗
         function openAuthorModal(id) {
             document.getElementById('modalContent').innerHTML = authorData[id];

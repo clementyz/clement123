@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>扬州大学纤维复合材料实验室 - 研究生名录</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft YaHei", sans-serif;
+        }
+        body {
+            background-color: #f7f9fc;
+            color: #222;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        /* 导航栏 */
+        .nav-bar {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .nav-bar a {
+            display: inline-block;
+            padding: 10px 24px;
+            margin: 0 8px;
+            background: #2b6cb0;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 8px;
+        }
+        .nav-bar a.active {
+            background: #1a365d;
+        }
+        .nav-bar a:hover {
+            background: #2c5282;
+        }
+        header {
+            text-align: center;
+            padding: 40px 0;
+            border-bottom: 1px solid #dde2eb;
+            margin-bottom: 40px;
+        }
+        header h1 {
+            font-size: 2.2rem;
+            color: #1a365d;
+            margin-bottom: 12px;
+        }
+        header p {
+            color: #555;
+            font-size: 1.05rem;
+        }
+        .stu-section h2 {
+            color: #1a365d;
+            margin-bottom: 25px;
+            font-size: 1.4rem;
+            padding-left: 8px;
+            border-left: 4px solid #2b6cb0;
+        }
+        /* 研究生卡片网格布局 */
+        .stu-wrap {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 24px;
+        }
+        .stu-card {
+            background: #fff;
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            display: flex;
+            gap: 20px;
+        }
+        .stu-avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #e2e8f0;
+        }
+        .stu-info h3 {
+            color: #1a365d;
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+        }
+        .stu-info p {
+            font-size: 0.95rem;
+            margin: 4px 0;
+            color: #333;
+        }
+        .stu-info .label {
+            font-weight: bold;
+            color: #444;
+        }
+        footer {
+            text-align: center;
+            margin-top: 60px;
+            padding: 30px 0;
+            color: #718096;
+            font-size: 0.9rem;
+            border-top: 1px solid #dde2eb;
+        }
+        /* 手机适配 */
+        @media(max-width:680px){
+            .stu-card {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            header h1 {
+                font-size: 1.7rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 导航栏 -->
+        <div class="nav-bar">
+            <a href="index.html">论文成果</a>
+            <a href="student.html" class="active">研究生名录</a>
+        </div>
+        <header>
+            <h1>扬州大学纤维复合材料实验室 · 全体研究生名录</h1>
+            <p>团队硕士研究生 | 个人简介汇总</p>
+        </header>
+        <section class="stu-section">
+            <h2>在读研究生信息</h2>
+            <!-- 仅保留一个stu-wrap，所有卡片放这里面，自动多列平铺 -->
+            <div class="stu-wrap">
+                <!-- 研究生卡片1 玛日耶姆·阿卜力米提 -->
+                <div class="stu-card">
+                    <img class="stu-avatar" src="xietian.jpg" alt="玛日耶姆头像">
+                    <div class="stu-info">
+                        <h3>玛日耶姆·阿卜力米提</h3>
+                        <p><span class="label">年级：</span>2021级硕士研究生</p>
+                        <p><span class="label">工位地点：</span>机械楼302实验室A区</p>
+                        <p><span class="label">研究方向：</span>复合材料双曲成形仿真、褶皱缺陷控制</p>
+                        <p><span class="label">成果：</span>发表SCI论文2篇，参与横向课题2项</p>
+                    </div>
+                </div>
+                <!-- 研究生卡片2 赵珏 -->
+                <div class="stu-card">
+                    <img class="stu-avatar" src="chenjiachao.jpg" alt="赵珏头像">
+                    <div class="stu-info">
+                        <h3>赵珏</h3>
+                        <p><span class="label">年级：</span>2022级硕士研究生</p>
+                        <p><span class="label">工位地点：</span>机械楼302实验室B区</p>
+                        <p><span class="label">研究方向：</span>三维织物力学性能测试</p>
+                        <p><span class="label">成果：</span>参与多项织物成型实验项目</p>
+                    </div>
+                </div>
+                <!-- 研究生卡片3 谢添 -->
+                <div class="stu-card">
+                    <img class="stu-avatar" src="xuzhangjie.jpg" alt="谢添头像">
+                    <div class="stu-info">
+                        <h3>谢添</h3>
+                        <p><span class="label">身份：</span>2023级硕士研究生</p>
+                        <p><span class="label">工位地点：</span>机械楼302实验操作台</p>
+                        <p><span class="label">研究方向：</span>3D簇绒预成型体成形优化</p>
+                        <p><span class="label">成果：</span>一作发表SCI论文1篇</p>
+                    </div>
+                </div>
+                <!-- 研究生卡片4 陈家超 -->
+                <div class="stu-card">
+                    <img class="stu-avatar" src="xuzhangjie.jpg" alt="陈家超头像">
+                    <div class="stu-info">
+                        <h3>陈家超</h3>
+                        <p><span class="label">身份：</span>2024级硕士研究生</p>
+                        <p><span class="label">工位地点：</span>机械楼302实验操作台</p>
+                        <p><span class="label">研究方向：</span>3D簇绒预成型体成形优化</p>
+                        <p><span class="label">成果：</span>一作发表SCI论文1篇</p>
+                    </div>
+                </div>
+                <!-- 研究生卡片5 王旭 -->
+                <div class="stu-card">
+                    <img class="stu-avatar" src="xuzhangjie.jpg" alt="王旭头像">
+                    <div class="stu-info">
+                        <h3>王旭</h3>
+                        <p><span class="label">身份：</span>2025级硕士研究生</p>
+                        <p><span class="label">工位地点：</span>机械楼302实验操作台</p>
+                        <p><span class="label">研究方向：</span>3D簇绒预成型体成形优化</p>
+                        <p><span class="label">成果：</span>一作发表SCI论文1篇</p>
+                    </div>
+                </div>
+                <!-- 研究生卡片6 李江 -->
+                <div class="stu-card">
+                    <img class="stu-avatar" src="xuzhangjie.jpg" alt="李江头像">
+                    <div class="stu-info">
+                        <h3>李江</h3>
+                        <p><span class="label">身份：</span>2026级硕士研究生</p>
+                        <p><span class="label">工位地点：</span>机械楼302实验操作台</p>
+                        <p><span class="label">研究方向：</span>3D簇绒预成型体成形优化</p>
+                        <p><span class="label">成果：</span>一作发表SCI论文1篇</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <footer>
+            <p>扬州大学纤维复合材料实验室学生成果展示站 | 所有成果为本团队原创研究</p>
+        </footer>
+    </div>
+</body>
+</html>
