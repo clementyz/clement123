@@ -33,8 +33,10 @@
             color: #fff;
             text-decoration: none;
             border-radius: 8px;
+            transition: background 0.25s ease;
         }
-        .nav a.active {
+        /* 修复：正确选择器 .nav-bar a.active，当前页面永久加深底色 */
+        .nav-bar a.active {
             background: #1a365d;
         }
         .nav-bar a:hover {
@@ -54,6 +56,13 @@
         header p {
             color: #555;
             font-size: 1.05rem;
+        }
+        .team-info {
+            background: #fff;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+            margin-bottom: 40px;
         }
         .direction-wrap {
             display: grid;
@@ -103,7 +112,6 @@
 </head>
 <body>
     <div class="container">
-        <!-- 修复：完整恢复4个导航按钮 -->
         <div class="nav-bar">
             <a href="index.html">论文成果</a>
             <a href="student.html">研究生名录</a>
@@ -112,7 +120,7 @@
         </div>
         <header>
             <h1>扬州大学纤维复合材料实验室主要研究方向</h1>
-        </div>
+        </header>
         <div class="direction-wrap">
             <!-- 一、树脂基复合材料样品制备及实验 | 配图：图2 簇绒设备原理图 -->
             <div class="direction-card">
@@ -120,25 +128,22 @@
                 <p>搭建完整复合材料成型实验平台，完成预制体织造、树脂灌注、固化成型与力学测试全流程实验。</p>
                 <img src="1.jpg" alt="簇绒缝合设备与工艺原理图">
             </div>
-
             <!-- 二、纤维复合材料织物变形模拟 | 配图：图3 成型工装设备 -->
             <div class="direction-card">
                 <h2>二、纤维复合材料织物大变形模拟</h2>
                 <p>采用有限元仿真手段，预测织物预成型体在双曲模具下的变形行为，抑制褶皱缺陷。</p>
                 <img src="2.jpg" alt="复合材料预成型工装设备">
             </div>
-
             <!-- 三、纤维复合材料多尺度力学性能模拟 | 配图：图12 有限元仿真模型 -->
             <div class="direction-card">
                 <h2>三、纤维复合材料强度/刚度多尺度模拟</h2>
                 <p>从纤维-基体微观、单胞细观、构件宏观多尺度耦合计算，预测复合材料力学性能。</p>
                 <img src="3.jpg" alt="簇绒预制体有限元仿真模型">
             </div>
-
             <!-- 四、纤维复合材料工艺开发 | 配图：图1 簇绒技术发展流程图 -->
             <div class="direction-card">
                 <h2>四、纤维复合材料工艺开发</h2>
-                <p>面向工程应用开发低成本、高质量三维复合材料成型新工艺。</p>
+                <p>面向工程应用开发低成本、高质量三维复合材料成型新工艺，优化改进针刺、簇绒技术。</p>
                 <img src="4.jpg" alt="Tufting簇绒技术发展历程">
             </div>
         </div>
